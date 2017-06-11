@@ -1,0 +1,24 @@
+/.tmp
+/logs
+
+
+##################
+# Testing Output #
+##################
+/coverage
+/reports
+
+###################
+# Node.js and NPM #
+###################
+/node_modules
+.node_history
+npm-debug.log
+*.log
+
+#################
+# IDE Specifics #
+#################
+/.idea
+/.netbeans
+nbproject
