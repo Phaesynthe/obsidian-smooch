@@ -7,6 +7,19 @@ const db = require('../DataStore/User.datastore');
 // TODO: should always trip internal and sensitive fields before transmitting externally
 
 module.exports = {
+  /**
+   * Creates a new user instance
+   * @param configObject
+   */
+  create: configObject => {
+
+  },
+
+  /**
+   * Get a user record by id
+   * @param id
+   * @returns {*}
+   */
   getById: id => {
     const results = db.filter(user => user.id === id);
     if (!results.length) {

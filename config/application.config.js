@@ -1,10 +1,10 @@
 module.exports = {
 
   // Used for final user facing display.
-  externalName: 'Plinth',
+  externalName: 'obsidian-smooch',
 
   // used for internal and development facing operations that will never be reported to the end user
-  internalName: 'Plinth',
+  internalName: 'obsidian-smooch',
 
   api: {
     baseUrl: 'v1',

@@ -1,10 +1,10 @@
 module.exports = {
   paths: {
-    '/pets': {
+    '/user': {
       get: {
-        summary: 'List all pets',
-        operationId: 'listPets',
-        tags: [ 'pets' ],
+        summary: 'List all users',
+        operationId: 'listusers',
+        tags: [ 'user' ],
         parameters: [
           {
             name: 'limit',
@@ -17,7 +17,7 @@ module.exports = {
         ],
         responses: {
           200: {
-            description: 'An paged array of pets',
+            description: 'An paged array of users',
             headers: {
               'x-next': {
                 type: 'string',
@@ -25,7 +25,7 @@ module.exports = {
               }
             },
             schema: {
-              $ref: '#/definitions/Pets'
+              $ref: '#/definitions/users'
             }
           },
           default: {
@@ -37,9 +37,9 @@ module.exports = {
         }
       },
       post: {
-        summary: 'Create a pet',
-        operationId: 'createPets',
-        tags: [ 'pets' ],
+        summary: 'Create a user',
+        operationId: 'createusers',
+        tags: [ 'users' ],
         responses: {
           201: {
             description: 'Null response'
@@ -53,17 +53,17 @@ module.exports = {
         }
       }
     },
-    '/pets/{petId}': {
+    '/users/{userId}': {
       get: {
-        summary: 'Info for a specific pet',
-        operationId: 'showPetById',
-        tags: [ 'pets' ],
+        summary: 'Info for a specific user',
+        operationId: 'showuserById',
+        tags: [ 'users' ],
         parameters: [
           {
-            name: 'petId',
+            name: 'userId',
             in: 'path',
             required: true,
-            description: 'The id of the pet to retrieve',
+            description: 'The id of the user to retrieve',
             type: 'string'
           }
         ],
@@ -71,7 +71,7 @@ module.exports = {
           200: {
             description: 'Expected response to a valid request',
             schema: {
-              $ref: '#/definitions/Pets'
+              $ref: '#/definitions/users'
             }
           },
           default: {
@@ -85,7 +85,7 @@ module.exports = {
     }
   },
   definitions: {
-    Pet: {
+    user: {
       required: [ 'id', 'name' ],
       properties: {
         id: {
@@ -100,10 +100,10 @@ module.exports = {
         }
       }
     },
-    Pets: {
+    users: {
       type: 'array',
       items: {
-        $ref: '#/definitions/Pet'
+        $ref: '#/definitions/user'
       }
     }
   }

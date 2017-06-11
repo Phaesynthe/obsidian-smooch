@@ -13,7 +13,6 @@ host.initialize(apiConfig);
 host.mountRoutes(routes);
 
 host.mountStatic('./.tmp/');
-host.mountViews('index');
 
 // Initialize swagger if the API process is not started in production mode.
 if (process.env.NODE_ENV !== 'production') {
