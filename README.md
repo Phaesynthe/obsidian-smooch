@@ -18,62 +18,22 @@ Then navigate a web browser to `http://localhost:24601/`.
 
 The incomplete set of unit tests can be run with `npm test`.
 
-### Database ###
-```sql
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `publicId` CHAR(36) NOT NULL DEFAULT 'uuid()',
-  `email` CHAR(254) NOT NULL,
-  `created` DATETIME NULL,
-  `lastLogin` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `publicId_UNIQUE` (`publicId` ASC),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
-ENGINE = InnoDB
-COMMENT = 'Generic, non-authentication, information related to a user';
-```
+### Prototype Features ###
+-[ ] A player can log in
+-[ ] A player can navigate their ship in a system
+-[ ] A player can navigate their ship between systems
+-[ ] A player has a ship
+-[ ] A player has a crew
+-[ ] A player's crew has named individuals with traits
+-[ ] A player can assign crew and named crew to roles and tasks
+-[ ] A player can set tasks
 
-```
-DROP TABLE IF EXISTS `player`;
-CREATE TABLE IF NOT EXISTS `player` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user` INT UNSIGNED NOT NULL,
-  `name` CHAR(255) NOT NULL,
-  `rank` ENUM('Skipper', 'Lieutenant', 'Commander', 'Captain', 'Commodore', 'Admiral', 'Marshal') NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
-ENGINE = InnoDB
-COMMENT ='';
-```
+What we are not trying to do at this time
+* Device notifications - although possible, it is not desirable to alter the backend methodology to suire a single need. This feature would be something better tackled in a native application or native-like application (thinking react native here).
 
-```
+## Design Thinking
+The timer based approach. Since we are not seeking to alert the user when a timer has finished, we can simply have a process that periodically checks the timers then triggers the appropraite handler in the API when the timer has completed.
 
-DROP TABLE IF EXISTS `stellarObject`;
-CREATE TABLE IF NOT EXISTS `stellarObject` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` CHAR(128) NOT NULL,
-  `type` CHAR(64) NOT NULL,
-  `posX` FLOAT NOT NULL,
-  `posY` FLOAT NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
-)
-ENGINE = InnoDB
-COMMENT ='';
-```
+## Look At
+-- I like these sounds http://s-alert-demo.meteorapp.com/
 
-```
-DROP TABLE IF EXISTS `spaceObject`;
-CREATE TABLE IF NOT EXISTS `spaceObject` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` CHAR(128) NOT NULL,
-  `type` CHAR(64) NOT NULL,
-  `posX` FLOAT NOT NULL,
-  `posY` FLOAT NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
-)
-ENGINE = InnoDB
-COMMENT ='';
-```

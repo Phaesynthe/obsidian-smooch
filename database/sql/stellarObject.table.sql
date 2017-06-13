@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `stellarObject` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` CHAR(128) NOT NULL,
+  `type` CHAR(64) NOT NULL,
+  `posX` FLOAT NOT NULL,
+  `posY` FLOAT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+)
+ENGINE = InnoDB
+COMMENT ='';
